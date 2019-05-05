@@ -1,32 +1,13 @@
-function sortMin(a, b) {
-
-  return a - b;
-
-}
-
-function sortMax(a, b) {
-
-  return b - a;
-
-}
-
-var arrBitcoins = [11, 9, 6, 8];
+var arrBitcoins = [20, 3, 8];
 
 var priceBitcoin = 0;
 
 function getArray(arr) {
 
-  var minNumber = 0;
-  var maxNumber = 0;
-
-  arr.sort(sortMin);
-  minNumber = arr[0];
-  arr.sort(sortMax);
-  maxNumber = arr[0];
-
-  priceBitcoin = maxNumber - minNumber;
+  var minNumber = Math.min.apply(Math , arr);
+  var maxNumber = Math.max.apply(Math , arr);
   
-  return priceBitcoin;
+  return priceBitcoin = maxNumber - minNumber;
 
 }
 
