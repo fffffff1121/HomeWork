@@ -10,7 +10,7 @@ function sortMax(a, b) {
 
 }
 
-var arrBitcoins = [11, 9, 3, 8];
+var arrBitcoins = [11, 9, 6, 8];
 
 var priceBitcoin = 0;
 
