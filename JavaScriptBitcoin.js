@@ -4,10 +4,9 @@ var priceBitcoin = 0;
 
 function getArray(arr) {
 
-  var minNumber = Math.min.apply(Math , arr);
-  var maxNumber = Math.max.apply(Math , arr);
-  
-  return priceBitcoin = maxNumber - minNumber;
+	var minNumber = Math.min.apply(Math, arr);
+	var maxNumber = Math.max.apply(Math, arr);
+	return priceBitcoin = maxNumber - minNumber;
 
 }
 
