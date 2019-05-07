@@ -15,7 +15,12 @@ function readArr(arr) {
 
 	});
 
-		
+ //До sort() , arrWithNum = 1,3,6,1,4,2
+
+ arrWithNum.sort(sortMintoMax);
+
+ //После , тоже самое - 1,3,6,1,4,2
+
  document.write(arrWithNum);
 	
 }
@@ -26,4 +31,4 @@ function sortMintoMax(a, b) {
 
 }
 
-readArr(arr);
+readArr(arr); // 1,3,6,1,4,2
