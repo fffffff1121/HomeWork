@@ -8,10 +8,8 @@ function readArr(arr) {
 	var arrWithNum = [];
 
 	arr.forEach(function(item, i) {
-
-		arrWithNum.push(arr[i]);
-
-    
+ 
+    arrWithNum.push(...item);  
 
 	});
 
