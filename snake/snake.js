@@ -79,6 +79,7 @@ createApple();
 
 var direction = "right";
 var steps = false;
+var IntervalMove = setInterval(move, 200);
 
 function move() {
 	var snakeCoordinates = [snakeBody[0].getAttribute("px"), snakeBody[0].getAttribute("py")]; //Создаем массив с координатами змеи
@@ -86,25 +87,25 @@ function move() {
 	snakeBody[snakeBody.length - 1].classList.remove('snakeBody'); //Удаляем класс из последнего элемента массива
 	snakeBody.pop(); //Удаляем последний элементы(кусок змеи) из массива вовсе
 
-	if (direction == 'right') {
+	if (direction == 'right') { //Проверка на столкновения если змея движется вправо
 		if (snakeCoordinates[0] < 10) {
 			snakeBody.unshift(document.querySelector('[px = "' + (+snakeCoordinates[0] + 1) + '"][py = "' + snakeCoordinates[1] + '"]'));
 		} else {
 			snakeBody.unshift(document.querySelector('[px = "1"][py = "' + snakeCoordinates[1] + '"]'));
 		}
-	} else if (direction == 'left') {
+	} else if (direction == 'left') { //Проверка на столкновения если змея движется влево
 		if (snakeCoordinates[0] > 1) {
 			snakeBody.unshift(document.querySelector('[px = "' + (+snakeCoordinates[0] - 1) + '"][py = "' + snakeCoordinates[1] + '"]'));
 		} else {
 			snakeBody.unshift(document.querySelector('[px = "10" ][py = "' + snakeCoordinates[1] + '"]'));
 		}
-	} else if (direction == 'up') {
+	} else if (direction == 'up') { //Проверка на столкновения если змея движется вверх
 		if (snakeCoordinates[1] < 10) {
 			snakeBody.unshift(document.querySelector('[px = "' + snakeCoordinates[0] + '"][py = "' + (+snakeCoordinates[1] + 1) + '"]'));
 		} else {
 			snakeBody.unshift(document.querySelector('[px = "' + snakeCoordinates[0] + '" ][py = "1"]'));
 		}
-	} else if (direction == 'down') {
+	} else if (direction == 'down') { //Проверка на столкновения если змея движется вниз
 		if (snakeCoordinates[1] > 1) {
 			snakeBody.unshift(document.querySelector('[px = "' + snakeCoordinates[0] + '"][py = "' + (+snakeCoordinates[1] - 1) + '"]'));
 		} else {
@@ -113,16 +114,16 @@ function move() {
 	}
 
     if(snakeBody[0].getAttribute('px') == apple.getAttribute('px') && snakeBody[0].getAttribute('py') == apple.getAttribute('py')) {
-
-        apple.classList.remove('apple');
-        var a = snakeBody[snakeBody.length - 1].getAttribute("px");
-        var b = snakeBody[snakeBody.length - 1].getAttribute("py");
-        snakeBody.push(document.querySelector('[px = "' + a + '"][py = "' + b + '"]'));
-        createApple();
+        // Если змея касается яблока
+        apple.classList.remove('apple'); //Удалить класс apple
+        var a = snakeBody[snakeBody.length - 1].getAttribute("px"); //Координаты до головы змеи по x
+        var b = snakeBody[snakeBody.length - 1].getAttribute("py"); //Координаты до головы змеи по y
+        snakeBody.push(document.querySelector('[px = "' + a + '"][py = "' + b + '"]')); //Добавить новую ячеку тела змеи
+        createApple(); //Создать новое яблоко
     }
-    if(snakeBody[0].classList.contains('snakeBody')) {
+    if(snakeBody[0].classList.contains('snakeBody')) { //Если змея касается своего тела головой
     
-        location.reload()
+        location.reload() //Перезагрузить страницу
 
     }
 	snakeBody[0].classList.add('head'); //Добавляем первому элементу массива класс head
@@ -134,29 +135,29 @@ function move() {
 	steps = true;
 }
 
-var IntervalMove = setInterval(move, 150);
 
 
-window.addEventListener('keydown', function(e) {
+
+window.addEventListener('keydown', function(e) { //Проверка на нажатие клавишь и изменения движения тела змеи
 
     if(steps == true) {
 
-		if (e.keyCode == 37 && direction != "right") {
+		if (e.keyCode == 37 && direction != "right") { // Если нажата клавиша под номеров 37
 
 			direction = "left";
 			steps = false;
 
-		} else if (e.keyCode == 38 && direction != "down") {
+		} else if (e.keyCode == 38 && direction != "down") { // Если нажата клавиша под номеров 38
 
 			direction = "up";
 			steps = false;
 
-		} else if (e.keyCode == 39 && direction != "left") {
+		} else if (e.keyCode == 39 && direction != "left") { // Если нажата клавиша под номеров 39
 
 			direction = "right";
 			steps = false;
 
-		} else if (e.keyCode == 40 && direction != "up") {
+		} else if (e.keyCode == 40 && direction != "up") { // Если нажата клавиша под номеров 40
 
 			direction = "down";
 			steps = false;
