@@ -1,3 +1,5 @@
+//
+
 var field = document.createElement('div');
 document.body.appendChild(field);
 field.classList.add('field');
@@ -17,6 +19,7 @@ for (var i = 0; i < 100; i++) {
 		y--;
 	}
 }
+
 var block = block.getElementsByClassName('block');
 
 //Создание змеи 
@@ -40,11 +43,11 @@ for (i = 0; i < snakeBody.length; i++) {
 }
 snakeBody[0].classList.add('sneakHead');
 
-function move() {	
-snakeBody[snakeBody.length - 1].classList.remove('snakeBody');
-snakeBody.pop();
+function move() {
+	snakeBody[snakeBody.length - 1].classList.remove('snakeBody');
+	snakeBody.pop();
 
 
 }
 
-var interval = setInterval(move , 300);
+var interval = setInterval(move, 300);
