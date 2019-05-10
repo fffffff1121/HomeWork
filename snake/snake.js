@@ -75,11 +75,22 @@ function createApple() {
 	apple.classList.add('apple'); //Создание класса для яблока
 }
 
-createApple();
+createApple(); //Создание яблока
 
-var direction = "right";
-var steps = false;
-var IntervalMove = setInterval(move, 200);
+var direction = "right"; //Создание начального напрвления движения
+var steps = false; //Фикс бага
+var IntervalMove = setInterval(move, 200); //Натсройка интервала движения змеи
+var input = document.createElement('input');
+document.body.appendChild(input);
+input.style.cssText = `
+	margin:auto;
+	margin-top:35px;
+	font-size: 35px;
+	display:block;
+`;
+
+var score = 0;
+input.value = `Ваши очки ${score}`;
 
 function move() {
 	var snakeCoordinates = [snakeBody[0].getAttribute("px"), snakeBody[0].getAttribute("py")]; //Создаем массив с координатами змеи
@@ -87,45 +98,46 @@ function move() {
 	snakeBody[snakeBody.length - 1].classList.remove('snakeBody'); //Удаляем класс из последнего элемента массива
 	snakeBody.pop(); //Удаляем последний элементы(кусок змеи) из массива вовсе
 
-	if (direction == 'right') { //Проверка на столкновения если змея движется вправо
+	if (direction == 'right') { //Проверка на столкновения со стеной если  змея движется вправо
 		if (snakeCoordinates[0] < 10) {
 			snakeBody.unshift(document.querySelector('[px = "' + (+snakeCoordinates[0] + 1) + '"][py = "' + snakeCoordinates[1] + '"]'));
 		} else {
 			snakeBody.unshift(document.querySelector('[px = "1"][py = "' + snakeCoordinates[1] + '"]'));
 		}
-	} else if (direction == 'left') { //Проверка на столкновения если змея движется влево
+	} else if (direction == 'left') { //Проверка на столкновения со стеной если змея движется влево
 		if (snakeCoordinates[0] > 1) {
 			snakeBody.unshift(document.querySelector('[px = "' + (+snakeCoordinates[0] - 1) + '"][py = "' + snakeCoordinates[1] + '"]'));
 		} else {
 			snakeBody.unshift(document.querySelector('[px = "10" ][py = "' + snakeCoordinates[1] + '"]'));
 		}
-	} else if (direction == 'up') { //Проверка на столкновения если змея движется вверх
+	} else if (direction == 'up') { //Проверка на столкновения со стеной если змея движется вверх
 		if (snakeCoordinates[1] < 10) {
 			snakeBody.unshift(document.querySelector('[px = "' + snakeCoordinates[0] + '"][py = "' + (+snakeCoordinates[1] + 1) + '"]'));
 		} else {
 			snakeBody.unshift(document.querySelector('[px = "' + snakeCoordinates[0] + '" ][py = "1"]'));
 		}
-	} else if (direction == 'down') { //Проверка на столкновения если змея движется вниз
+	} else if (direction == 'down') { //Проверка на столкновения со стеной если змея движется вниз
 		if (snakeCoordinates[1] > 1) {
 			snakeBody.unshift(document.querySelector('[px = "' + snakeCoordinates[0] + '"][py = "' + (+snakeCoordinates[1] - 1) + '"]'));
 		} else {
 			snakeBody.unshift(document.querySelector('[px = "' + snakeCoordinates[0] + '" ][py = "10"]'));
 		}
 	}
+	if (snakeBody[0].getAttribute('px') == apple.getAttribute('px') && snakeBody[0].getAttribute('py') == apple.getAttribute('py')) {
+		// Если змея касается яблока
+		apple.classList.remove('apple'); //Удалить класс apple
+		var a = snakeBody[snakeBody.length - 1].getAttribute("px"); //Координаты до головы змеи по x
+		var b = snakeBody[snakeBody.length - 1].getAttribute("py"); //Координаты до головы змеи по y
+		snakeBody.push(document.querySelector('[px = "' + a + '"][py = "' + b + '"]')); //Добавить новую ячеку тела змеи
+		createApple(); //Создать новое яблоко
+		score++;
+		input.value = `Ваши очки ${score}`;
+	}
+	if (snakeBody[0].classList.contains('snakeBody')) { //Если змея касается своего тела головой
 
-    if(snakeBody[0].getAttribute('px') == apple.getAttribute('px') && snakeBody[0].getAttribute('py') == apple.getAttribute('py')) {
-        // Если змея касается яблока
-        apple.classList.remove('apple'); //Удалить класс apple
-        var a = snakeBody[snakeBody.length - 1].getAttribute("px"); //Координаты до головы змеи по x
-        var b = snakeBody[snakeBody.length - 1].getAttribute("py"); //Координаты до головы змеи по y
-        snakeBody.push(document.querySelector('[px = "' + a + '"][py = "' + b + '"]')); //Добавить новую ячеку тела змеи
-        createApple(); //Создать новое яблоко
-    }
-    if(snakeBody[0].classList.contains('snakeBody')) { //Если змея касается своего тела головой
-    
-        location.reload() //Перезагрузить страницу
+		location.reload() //Перезагрузить страницу
 
-    }
+	}
 	snakeBody[0].classList.add('head'); //Добавляем первому элементу массива класс head
 	for (var i = 0; i < snakeBody.length; i++) {
 
@@ -135,12 +147,9 @@ function move() {
 	steps = true;
 }
 
-
-
-
 window.addEventListener('keydown', function(e) { //Проверка на нажатие клавишь и изменения движения тела змеи
 
-    if(steps == true) {
+	if (steps == true) {
 
 		if (e.keyCode == 37 && direction != "right") { // Если нажата клавиша под номеров 37
 
@@ -163,10 +172,5 @@ window.addEventListener('keydown', function(e) { //Проверка на наж�
 			steps = false;
 
 		}
-    }
-
-
+	}
 });
-
-
-
