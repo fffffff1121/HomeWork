@@ -77,7 +77,7 @@ function createApple() {
 
 createApple(); //Создание яблока
 
-var direction = "right"; //Создание начального напрвления движения
+var direction = "right"; //Создание начального направления движения
 var steps = false; //Фикс бага
 var IntervalMove = setInterval(move, 200); //Натсройка интервала движения змеи
 var input = document.createElement('input');
