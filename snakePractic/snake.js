@@ -54,7 +54,7 @@ function createApple() {
 	var appleCoordinates = coordinatesApple();
 	var apple = document.querySelector('[px = "' + appleCoordinates[0] + '"][py = "' + appleCoordinates[1] + '"]');
 	console.log(apple);
-    apple.classList.add('apple');
+	apple.classList.add('apple');
 }
 createApple();
 
@@ -95,20 +95,24 @@ function move() {
 		}
 	}
 
-    var apples = document.getElementsByClassName('apple');
-    var snakeWithClass = document.getElementsByClassName('snakeBody');
+	for(i = 1; i < snakeBody.length; i++){
+		if(snakeBody[i].classList.contains('apple')){
+			snakeBody[i].classList.remove('apple');
+			createApple();
+			break;
+		}
+	}
 
+	if (snakeBody[0].classList.contains('apple')) {
+		snakeBody[0].classList.remove('apple');
+		snakeBody.push(document.querySelector('[px = "' + snakeCoordinates[0] + '"][py = "' + snakeCoordinates[1] + '"]'));
+		snakeBody[snakeBody.length - 1].classList.add('snakeBody');
+		createApple();
+	}
 
-    if(snakeBody[0].classList.contains('apple')) {
-        snakeBody[0].classList.remove('apple');
-    	snakeBody.push(document.querySelector('[px = "' + snakeCoordinates[0] + '"][py = "' + snakeCoordinates[1] + '"]'));
-    	snakeBody[snakeBody.length - 1].classList.add('snakeBody');
-        createApple();
-    }
-   
-    if(snakeBody[0].classList.contains('snakeBody')){
-    	window.location.reload();
-    }
+	if (snakeBody[0].classList.contains('snakeBody')) {
+		window.location.reload();
+	}
 
 	for (var i = 0; i < snakeBody.length; i++) {
 		snakeBody[i].classList.add('snakeBody');
@@ -139,4 +143,3 @@ document.addEventListener("keydown", function key(e) {
 		console.log(true);
 	}
 });
-
