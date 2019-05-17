@@ -1,17 +1,26 @@
-.field{
-width : 500px;
-height : 500px;
-display : flex;
-flex-wrap : wrap;
-background : black;
+.field {
+    width : 500px;
+    height : 500px;
+    display : flex;
+    flex-wrap : wrap;
+    background : black;
 }
 .block{
-width : 50px;
-height : 50px;
+    width : 50px;
+    height : 50px;
 }
-.snakeBody , .sneakHead{
-background : green;	
+.snakeBody {
+    background : green;	
 }
 .apple{
-	background: red;
+	background : red;
+}
+.lose {
+	color : black;
+	font-size : 36px;
+	display : flex;
+	align-items: center;
+}
+#animation {
+	transition : color 5s;
 }
