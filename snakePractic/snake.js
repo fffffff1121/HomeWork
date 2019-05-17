@@ -18,7 +18,7 @@ for (var i = 0; i < 100; i++) {
 	}
 }
 
-var block = block.getElementsByClassName('block');
+const block = block.getElementsByClassName('block');
 
 //Создание змеи 
 
