@@ -5,7 +5,7 @@ field.classList.add('field');
 var x = 1,
 	y = 10;
 
-for (var i = 0; i < 100; i++) {
+for (let i = 0; i < 100; i++) {
 	var block = document.createElement('div');
 	field.appendChild(block);
 	block.classList.add('block')
@@ -18,17 +18,11 @@ for (var i = 0; i < 100; i++) {
 	}
 }
 
-const block = block.getElementsByClassName('block');
+var block = block.getElementsByClassName('block');
 
-//Создание змеи 
+//Create snake
 
-function createCoordinates() {
-	var px = (Math.floor(Math.random() * (10 - 3) + 3));
-	var py = (Math.floor(Math.random() * (10 - 1) + 1));
-	return [px, py];
-}
-
-var coordinates = createCoordinates();
+var coordinates = createRandCoordinates(10, 3, 10, 1);;
 console.log(coordinates);
 
 var snakeBody = [setCoordinates(coordinates[0], coordinates[1]),
@@ -41,22 +35,9 @@ snakeBody.forEach(function(currentValue, index) {
 });
 snakeBody[0].classList.add('snakeHead');
 
-//создание яблока
-
-function createApple() {
-	function coordinatesApple() {
-		var px = (Math.floor(Math.random() * (10 - 1) + 1));
-		var py = (Math.floor(Math.random() * (10 - 1) + 1));
-		return [px, py];
-	}
-	var appleCoordinates = coordinatesApple();
-	var apple = setCoordinates(appleCoordinates[0], appleCoordinates[1]);
-	console.log(apple);
-	apple.classList.add('apple');
-}
 createApple();
 
-var moveTo = 'right';
+let moveTo = 'right';
 
 
 
@@ -68,17 +49,19 @@ function move() {
 
 	if (moveTo == 'right') {
 		if (snakeCoordinates[0] < 10) {
-			snakeBody.unshift(setCoordinates(`${+snakeCoordinates[0] + 1}`, snakeCoordinates[1]));
+		    snakeBody.unshift(setCoordinates(`${+snakeCoordinates[0] + 1}`, snakeCoordinates[1]));
 		} else {
 			snakeBody.unshift(setCoordinates(1, snakeCoordinates[1]));
 		}
 	}
 	if (moveTo == 'left') {
 		if (snakeCoordinates[0] > 1) {
-			snakeBody.unshift(setCoordinates(`${+snakeCoordinates[0] - 1}`, snakeCoordinates[1]));
-		} else {
-			snakeBody.unshift(setCoordinates(10, snakeCoordinates[1]));
-		}
+      snakeBody.unshift(
+        setCoordinates(`${+snakeCoordinates[0] - 1}`, snakeCoordinates[1])
+      );
+    } else {
+      snakeBody.unshift(setCoordinates(10, snakeCoordinates[1]));
+    }
 	}
 	if (moveTo == 'up') {
 		if (snakeCoordinates[1] < 10) {
@@ -95,6 +78,8 @@ function move() {
 		}
 	}
 
+	
+	
 	for (i = 1; i < snakeBody.length; i++) {
 		if (snakeBody[i].classList.contains('apple')) {
 			snakeBody[i].classList.remove('apple');
@@ -137,14 +122,11 @@ function move() {
 
 	snakeBody[0].classList.add('snakeHead');
 
-
 }
-
-
 
 var interval = setInterval(move, 150);
 
-//Нажатие клавиш
+//Key
 
 document.addEventListener("keydown", function key(e) {
 	if (e.keyCode == 87 && moveTo != 'down') {
@@ -161,6 +143,26 @@ document.addEventListener("keydown", function key(e) {
 	}
 });
 
+
+//Fucntion
+
 function setCoordinates(px, py) {
 	return document.querySelector('[px = "' + px + '"][py = "' + py + '"]');
+}
+
+function randNum(min, max) {
+	return (Math.floor(Math.random() * (max - min) + min));
+}
+
+function createRandCoordinates(max_1, min_1, max_2, min_2) {
+	var px = randNum(max_1, min_1);
+	var py = randNum(max_2, min_2);
+	return [px, py];
+}
+
+function createApple() {
+	var appleCoordinates = createRandCoordinates(10, 1, 10, 1);
+	var apple = setCoordinates(appleCoordinates[0], appleCoordinates[1]);
+	console.log(apple);
+	apple.classList.add('apple');
 }
