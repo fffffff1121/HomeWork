@@ -47,6 +47,8 @@ function move() {
 	snakeBody[snakeBody.length - 1].classList.remove('snakeBody');
 	snakeBody.pop();
 
+	
+	
 	if (moveTo == 'right') {
 		if (snakeCoordinates[0] < 10) {
 		    snakeBody.unshift(setCoordinates(`${+snakeCoordinates[0] + 1}`, snakeCoordinates[1]));
@@ -56,9 +58,7 @@ function move() {
 	}
 	if (moveTo == 'left') {
 		if (snakeCoordinates[0] > 1) {
-      snakeBody.unshift(
-        setCoordinates(`${+snakeCoordinates[0] - 1}`, snakeCoordinates[1])
-      );
+      snakeBody.unshift(setCoordinates(`${+snakeCoordinates[0] - 1}`, snakeCoordinates[1]));
     } else {
       snakeBody.unshift(setCoordinates(10, snakeCoordinates[1]));
     }
