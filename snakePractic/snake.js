@@ -2,7 +2,7 @@ var field = document.createElement('div');
 document.body.appendChild(field);
 field.classList.add('field');
 
-var x = 1,
+let x = 1,
 	y = 10;
 
 for (let i = 0; i < 100; i++) {
@@ -22,10 +22,10 @@ var block = block.getElementsByClassName('block');
 
 //Create snake
 
-var coordinates = createRandCoordinates(10, 3, 10, 1);;
+let coordinates = createRandCoordinates(10, 3, 10, 1);;
 console.log(coordinates);
 
-var snakeBody = [setCoordinates(coordinates[0], coordinates[1]),
+let snakeBody = [setCoordinates(coordinates[0], coordinates[1]),
 	setCoordinates(`${coordinates[0] - 1}`, coordinates[1]),
 	setCoordinates(`${coordinates[0] - 2}`, coordinates[1])
 ];
@@ -42,13 +42,11 @@ let moveTo = 'right';
 
 
 function move() {
-	var snakeCoordinates = [snakeBody[0].getAttribute("px"), snakeBody[0].getAttribute("py")];
+	let snakeCoordinates = [snakeBody[0].getAttribute("px"), snakeBody[0].getAttribute("py")];
 	snakeBody[0].classList.remove('snakeHead');
 	snakeBody[snakeBody.length - 1].classList.remove('snakeBody');
 	snakeBody.pop();
 
-	
-	
 	if (moveTo == 'right') {
 		if (snakeCoordinates[0] < 10) {
 		    snakeBody.unshift(setCoordinates(`${+snakeCoordinates[0] + 1}`, snakeCoordinates[1]));
@@ -95,19 +93,19 @@ function move() {
 		createApple();
 	}
 
-	var field = document.getElementsByClassName('field');
+	let field = document.getElementsByClassName('field');
 
 	if (snakeBody[0].classList.contains('snakeBody')) {
-		clearInterval(interval);
+		clearInterval(INTERVAL);
 
 		field[0].parentNode.removeChild(field[0]);
 
-		var lose = document.createElement('h1');
+		let lose = document.createElement('h1');
 		document.body.appendChild(lose);
 		lose.classList.add('lose');
 		document.querySelector('.lose').innerHTML = 'You lose!';
 
-		var time = setTimeout(function() {
+		const TIME = setTimeout(function() {
 
 			window.location.reload();
 
@@ -124,7 +122,7 @@ function move() {
 
 }
 
-var interval = setInterval(move, 150);
+const INTERVAL = setInterval(move, 150);
 
 //Key
 
@@ -155,14 +153,14 @@ function randNum(min, max) {
 }
 
 function createRandCoordinates(max_1, min_1, max_2, min_2) {
-	var px = randNum(max_1, min_1);
-	var py = randNum(max_2, min_2);
+	let px = randNum(max_1, min_1);
+	let py = randNum(max_2, min_2);
 	return [px, py];
 }
 
 function createApple() {
-	var appleCoordinates = createRandCoordinates(10, 1, 10, 1);
-	var apple = setCoordinates(appleCoordinates[0], appleCoordinates[1]);
+	let appleCoordinates = createRandCoordinates(10, 1, 10, 1);
+	let apple = setCoordinates(appleCoordinates[0], appleCoordinates[1]);
 	console.log(apple);
 	apple.classList.add('apple');
 }
