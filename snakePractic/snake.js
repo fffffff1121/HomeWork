@@ -1,10 +1,11 @@
-var field = document.createElement('div');
+let field = document.createElement('div');
 document.body.appendChild(field);
 field.classList.add('field');
 let x = 1,
 	y = 10;
+	let block;
 for (let i = 0; i < 100; i++) {
-	var block = document.createElement('div');
+	block = document.createElement('div');
 	field.appendChild(block);
 	block.classList.add('block')
 	block.setAttribute('px', x);
@@ -15,7 +16,7 @@ for (let i = 0; i < 100; i++) {
 		y--;
 	}
 }
-var block = block.getElementsByClassName('block');
+block = block.getElementsByClassName('block');
 let coordinates = createRandCoordinates(10, 3, 10, 1);;
 let snakeBody = [setCoordinates(coordinates[0], coordinates[1]),
 	setCoordinates(`${coordinates[0] - 1}`, coordinates[1]),
