@@ -6,39 +6,62 @@ let live_field = document.createElement('div');
 field.appendChild(live_field);
 live_field.classList.add('live_field');
 
-let block;
-for(let i = 0; i < 5; i++) {
-    block = document.createElement('div');
-    live_field.appendChild(block);
-    block.classList.add('block');
-}
+let low_field = document.createElement('div');
+document.body.appendChild(low_field);
+low_field.classList.add('lowField');
 
+let div_with_blocks;
+let block;
 block = document.getElementsByClassName('block');
 
-//Делаем шарик
+for(let i = 0; i < 3; i++) {
+    div_with_blocks = document.createElement('div');
+    live_field.appendChild(div_with_blocks);
+    div_with_blocks.classList.add('divBlocks');
+    for(let q = 0; q < 5; q++) {
+        block = document.createElement('div');
+        div_with_blocks.appendChild(block);
+        block.classList.add('block');
+    }
+}
 
 let round = document.createElement('div');
 live_field.appendChild(round);
 round.classList.add('round');
 
-round = document.addEventListener('div');
+let platform = document.createElement('div');
+live_field.appendChild(platform);
+platform.classList.add('platform');
 
-let RoundStyle = getComputedStyle(round);
+let left = document.createElement('div');
+platform.appendChild(left);
+left.classList.add('leftPlatform');
 
-let start = Date.now();
-const FPS = 50;
-let O = 0;
+let right = document.createElement('div');
+platform.appendChild(right);
+right.classList.add('rightPlatform');
 
-let n = 100000000;
-for(let i = 0; i < n; i++){
-        O += i;
-    }
+let direction = 'right';
 
 function move() {
-    
-    function go() {
-        round.style.left = O/5 + "px";
-    }
+
+
 }
 
+const FPS = 60;
 const INTERVAL = setInterval(move, FPS);
+
+let platformClass = getComputedStyle(platform);
+
+addEventListener('keydown' , function key(e) {
+
+    if(e.keyCode == 37 ) {
+        direction = 'left';
+        platformClass.left = '1%';
+    }
+    if(e.keyCode == 39 ) {
+        direction = 'right';
+        platformClass.left = '67%';
+    }
+
+});
