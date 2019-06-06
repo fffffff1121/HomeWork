@@ -1,83 +1,170 @@
-body,html{
-    background : #F2F4F8 ;
+body, html {
+    background: #F2F4F8 ;
     font-family: Montserrat;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     height: 100%;
 }
-.markup{
-    min-height:100%;
-    margin-left:auto;
-    margin-right:auto;
+.markup {
+    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
     width: 1228px;
 
 }
-#divKey{
+#div-key {
     display: flex;
     justify-content: center;
-    text-align : center;
-    color : #424242 ;
-    font-size : 40vmin;
+    text-align: center;
+    color: #424242 ;
+    font-size: 40vmin;
     font-weight: 500;
-    padding-top:178px
+    padding-top: 178px
 }
-.divId{
-
-    min-height:100%;
+.div-id {
+    min-height: 100%;
 }
-.blocksDiv{
-    display:flex;
+#blocks-div {
+    display: flex;
     height: 100px;
+    margin-bottom: auto;
 }
-.block{
+.block {
     width: 302px;
     height: 93px;
-    background:white;
-    border-radius:5px;
-    margin-left:10px;
-    margin-right:10px;
-    box-shadow:0 9px 6px -12px black;
-    margin-top:7px;
-    transition:0.1s all;
+    background: white;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    box-shadow: 0 9px 6px -12px black;
+    margin-top: 7px;
+    transition: 0.1s all;
 }
 
-.blockName{
+.block-name {
     width: 100%;
     height: 25px;
     background: #B9E9FF;
-    border-radius:5px 5px 0 0;
-    text-align:center;
-    color:#424242;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    color: #424242;
     font-size: 12px;
     font-weight: 600;
-    padding-top:7px
+    padding-top: 7px
 }
 
-.blockInfo{
-    text-align:center;
-    padding-top:13px;
+.block-info {
+    text-align: center;
+    padding-top: 13px;
     font-size: 26px;
     font-weight: 400;
-    color:#424242;
+    color: #424242;
 }
 
 .block:hover {
-    transition:0.1s all;
-    margin-top:0;
-    box-shadow:0 9px 16px -10px black;
+    transition: 0.1s all;
+    margin-top: 0;
+    box-shadow: 0 9px 16px -10px black;
 }
 
-.RED {
-    color:red;
-    margin-left:5px;
-    margin-right:5px;
+.red {
+    color: red;
+    margin-left: 5px;
+    margin-right: 5px;
 }
-.p{
+.p-grey {
+    width: 900px;
+    background: #F7F7F7;
+    border: 2px solid #5E5E5E;
+    border-radius: 5px;
+    margin-bottom: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+.p-grey-p {
+    font-size: 26px;
+    color: #5E5E5E;
+    font-weight: 900;
+    text-align: center;
+}
+
+.hide {
+    display: none !important;
+}
+.button {
+    width: 74px;
+    height: 34px;
+    border-radius: 5px;
+    border: 2px solid #0091D4;
+    float: right;
+    margin-right: 25px;
+    margin-top: 25px;
+    background: white;
+    font-weight: 900;
+    font-size: 15px;
+    color: #0091D4;
+    transition: 0.5s all;
+}
+.button:hover{
+    margin-top: 20px;
+    transition: 0.5s all;
+    box-shadow: 0 8px 16px -15px black;
+}
+
+.center {
+    height: 890px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.table {
+    width: 640px;
+    height: 639px;
+    background: white;
+    border-radius: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+.div-with-table-name {
+    height: 36px;
+    background: #B9E9FF;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    box-shadow: 0 5px 17px -16px;
+}
+.div-with-table-name-left, .div-with-table-name-right {
+    width: 300px;
+    padding: 12px;
+    font-size: 12px;
+    font-weight: 900;
+}
+footer {
+    display: block;
+    position: absolute;
+    text-align: center;
+    width: 1129px;
+}
+.p {
     font-size: 20px;
-    display:block;
-    position:absolute;
-    bottom:5px;
-    left:32%;
-    margin-left:auto;
-    margin-right:auto;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    height: 890px;
+}
+.div-with-table {
+    height: 603px;
+    overflow: scroll;
+}
+.div-block {
+    display: flex;
+    height: 36px;
+}
+.div-block div{
+    width: 300px;
+    padding:10px;
 }

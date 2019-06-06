@@ -1,64 +1,71 @@
-let markup = document.createElement('div');
-document.body.appendChild(markup);
-markup.classList.add('markup');
+let pGrey = document.getElementById('search-id');
+document.body.onkeydown = function(){
+    pGrey.remove();
+    button[0].classList.remove('hide');
+};
+divKeyId = document.getElementById("div-key");
 
-let divWithAllDivs = document.createElement('div');
-markup.appendChild(divWithAllDivs);
-divWithAllDivs.classList.add('divId');
-let divKey = document.createElement('div');
-divWithAllDivs.appendChild(divKey);
-divKey.id = "divKey";
-divKeyId = document.getElementById('divKey');
-
-addEventListener('keydown' , function(e) {
-divKeyId.innerHTML = e.keyCode;
-
-
+addEventListener("keydown", function(e) {
+  divKeyId.innerHTML = e.keyCode;
 });
 
-let divWithBlocks = document.createElement('div');
-divWithAllDivs.appendChild(divWithBlocks);
-divWithBlocks.classList.add('blocksDiv');
 
-addEventListener('keydown', function t(){
-     for(let i = 1; i <= 4; i++){
-    let block = document.createElement('div');
-    let blockName = document.createElement('div');
-    let blockInfo = document.createElement('div');
+
+divWithBlocks = document.getElementById('blocks-div');
+
+function createBlocks(){
+  for (let i = 1; i <= 4; i++) {
+    let block = document.createElement("div");
+    let blockName = document.createElement("div");
+    let blockInfo = document.createElement("div");
     block.appendChild(blockName);
     block.appendChild(blockInfo);
     divWithBlocks.appendChild(block);
-    block.classList.add('block');
-    blockName.classList.add('blockName');
-    blockName.classList.add('blockName' + i);
-    blockInfo.classList.add('blockInfo');
-    blockInfo.classList.add('blockInfo' + i);
-    }
-    removeEventListener('keydown',t,false);
-})
-   
+    block.classList.add("block");
+    blockName.classList.add("block-name");
+    blockName.classList.add("block-name" + i);
+    blockInfo.classList.add("block-info");
+    blockInfo.classList.add("block-info" + i);
+  };
+  removeEventListener("keydown",createBlocks, false);
+};
 
+addEventListener("keydown", createBlocks);
 
+blockNameId = document.getElementsByClassName("block-name");
+blockInfoId = document.getElementsByClassName("block-info");
 
-blockNameId = document.getElementsByClassName('blockName');
-blockInfoId = document.getElementsByClassName('blockInfo');
+function blockEdit(e) {
+  blockNameId[0].innerHTML = "event.key";
+  blockNameId[1].innerHTML = "event.location";
+  blockNameId[2].innerHTML = "event.which";
+  blockNameId[3].innerHTML = "event.code";
 
+  blockInfoId[0].innerHTML = e.key;
+  blockInfoId[1].innerHTML = e.location;
+  blockInfoId[2].innerHTML = e.which;
+  blockInfoId[3].innerHTML = e.code;
+};
 
-addEventListener('keydown' , function(e) {
-    
-blockNameId[0].innerHTML = 'event.key';
-blockNameId[1].innerHTML = 'event.location';
-blockNameId[2].innerHTML = 'event.which';
-blockNameId[3].innerHTML = 'event.code';
+addEventListener("keydown", blockEdit);
 
-blockInfoId[0].innerHTML = e.key;
-blockInfoId[1].innerHTML = e.location;
-blockInfoId[2].innerHTML = e.which;
-blockInfoId[3].innerHTML = e.code;
+let divId = document.getElementById('div-id-search');
+let header = document.getElementsByClassName('header');
+let center = document.getElementsByClassName('center');
+let button = document.getElementsByClassName('button');
+let buttonSecond = document.getElementsByClassName('buttonSecond');
+
+button[0].addEventListener('click', function(){
+  header[0].classList.add('hide');
+  center[0].classList.remove('hide');
+  button[0].classList.add('hide');
+  button[1].classList.remove('hide');
 });
 
-let p = document.createElement('p');
-markup.appendChild(p);
-p.classList.add('p');
+button[1].addEventListener('click', function(){
+  header[0].classList.remove('hide');
+  center[0].classList.add('hide');
+  button[0].classList.remove('hide');
+  button[1].classList.add('hide');
+});
 
-p.innerHTML = 'Сдесь могла быть реклама <span class="RED"> Сайта </span> — и ссылка на мой <span class="RED">GitHub</span>';
