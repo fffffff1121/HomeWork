@@ -53,7 +53,7 @@ const INTERVAL = setInterval(move, FPS);
 
 let platformClass = getComputedStyle(platform);
 
-addEventListener('keydown' , function key(e) {
+addEventListener('keydown', function (e) {
 
     if(e.keyCode == 37 ) {
         direction = 'left';

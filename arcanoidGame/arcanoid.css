@@ -14,22 +14,22 @@ justify-content: center;
 width : 900px;
 height : 900px;
 background: black;
-display:inline-block;
+display: inline-block;
 }
 .block {
 width: 170px ;
 height: 50px ;
 border-radius: 5px;
-background:green;
-margin:5px;
+background: green;
+margin: 5px;
 }
-.divBlocks{
+.divBlocks {
 width: 900px;
 height: 60px;
 display : flex;
 flex-wrap : wrap;
 }
-.lowField{
+.lowField {
 width: 950px;
 height: 1px;
 background: white;
@@ -37,33 +37,33 @@ background: white;
 .round{
 width: 50px;
 height: 50px;
-position:relative;
+position: relative;
 background: red;    
-border-radius:50px;
-margin:0;
-padding:0;
-left:47%;
-top:67%;
+border-radius: 50px;
+margin: 0;
+padding: 0;
+left: 47%;
+top: 67%;
 }
-.platform{
+.platform {
 display: flex;    
 width: 300px;
 height: 60px;
-position:relative;
-left:40%;
-top:67%;
+position: relative;
+left: 40%;
+top: 67%;
 background: yellow;    
-border-radius:6px;
+border-radius: 6px;
 }
-.rightPlatform{
-    width:150px;
-    height: 60px;
-    background: yellow;
-    border-radius:6px
+.rightPlatform {
+width: 150px;
+height: 60px;
+background: yellow;
+border-radius: 6px
 }
-.leftPlatform{
-    width:150px;
-    height: 60px;
-    background: yellow;
-    border-radius:6px
+.leftPlatform {
+width: 150px;
+height: 60px;
+background: yellow;
+border-radius: 6px
 }
