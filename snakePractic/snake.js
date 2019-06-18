@@ -122,3 +122,4 @@ function createApple() {
 	apple = setCoordinates(appleCoordinates[0], appleCoordinates[1]);
 	apple.classList.add('apple');
 }
+
