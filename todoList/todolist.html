@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="todolist.css">
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,56 +12,34 @@
         <title>TodoList Bootstrap</title>
     </head>
     <body>
-        <div class="container" style="background-color:salmon">
+        <!-- Подключение своего JavaScript файла -->
+        <script src="todolist.js"></script>
+        <div class="container-fluid mt-5" style="background-color:salmon">
+            <div class="col-md-12">
+                <h1 class="text-center" id="main_name"></h1>
+            </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2 pt-1" style="height:600px; background-color:skyblue">
                     <div class="row">
-                        <div class="col-md-12"><p>---</p></div>
-                        <div class="col-md-12"><p>Отмеченные</p></div>
-                        <div class="col-md-12"><p>Невыполненые</p></div>
-                        <div class="col-md-12"><p>Выполненые</p></div>
+                        <button type="button" class="btn btn-primary col-md-12 mb-1" id="button_marked">Отмеченные</button>
+                        <button type="button" class="btn btn-primary col-md-12 mb-1" id="button_unfulfilled">Невыполненые</button>
+                        <button type="button" class="btn btn-primary col-md-12 mb-1" id="button_performed">Выполненые</button>
                     </div>
                 </div>
-                <div class="col-md-9">
-                    
+                <div class="col-md-10 pt-1" id="complete">
                     <div class="row" id="row_input_id">
-                        <div class="col-md-12">
+                        <div class="col-md-12" id="main-menu-add">
                             <div class="row">
-                                <div class="col-md-2"><p>---</p></div>
-                                <div class="col-md-10">
-                                    <input type="text" id="new_input" placeholder="Введите новую цель">
+                                <div class="col-md-12">
+                                    <input type="text" id="new_input" class="form-control mb-1 mt-1" placeholder="Введите новую цель">
+                                    <button type="button" class="btn btn-primary mb-1" id="new_button">Добавить</button>                  
                                 </div>
                             </div>
-                        </div>
-                            
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-2"><p>1</p></div>
-                                <div class="col-md-10"><p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.</p></div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-2"><p>2</p></div>
-                                    <div class="col-md-10"><p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.</p></div>
-                                </div>
-                        </div>
-                        <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-2"><p>3</p></div>
-                                    <div class="col-md-10"><p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.</p></div>
-                                </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-            
-
-
-
-        <!-- Подключение своего JavaScript файла -->
-        <script src="todolist.js"></script>
+        </div>               
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

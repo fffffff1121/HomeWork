@@ -1,0 +1,37 @@
+#no-main-menu {
+    background-color: #AFDAEB;
+    margin-bottom: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+#main-menu-add {
+    background-color: #1EFFA1;
+    margin-bottom: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.main-menu-list {
+    background-color: #9DFFD6;
+    margin-bottom: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.col-md-11 p, .col-md-1 p, .col-md-12 p { 
+    max-width: 580px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.col-md-11 input {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#complete {
+    height: 600px;
+    overflow: scroll;
+    overflow-x: hidden;
+    background-color: #00D0D0;
+}
+.hide {
+    display: none !important;
+}
